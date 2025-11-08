@@ -98,7 +98,7 @@ export default function ChatWindow({ selectedUser, messages, onSendMessage }: Ch
                     message.isOwn ? 'text-right' : 'text-left'
                   }`}
                 >
-                  {formatDistanceToNow(message.timestamp, { addSuffix: true })}
+                  {formatDistanceToNow(message.timestamp??"", { addSuffix: true })}
                 </p>
               </div>
             </div>
@@ -122,8 +122,7 @@ export default function ChatWindow({ selectedUser, messages, onSendMessage }: Ch
             autoSize={{ minRows: 1, maxRows: 4 }}
             className="flex-1 rounded-xl"
           />
-          <Button
-            type="primary"
+          <Button 
             icon={<SendOutlined />}
             onClick={handleSend}
             disabled={!messageText.trim()}
