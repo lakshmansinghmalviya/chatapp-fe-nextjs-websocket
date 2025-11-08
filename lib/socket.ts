@@ -1,3 +1,4 @@
+import { BASE_URL } from "@/contants/globalvar";
 import { Client, IMessage } from "@stomp/stompjs";
 import SockJS from "sockjs-client";
 
@@ -6,7 +7,7 @@ type MessageCallback = (message: string) => void;
 let stompClient: Client | null = null;
 
 export const connectWebSocket = (onMessageReceived: MessageCallback) => {
-  const socket = new SockJS("http://localhost:8080/ws");
+  const socket = new SockJS(BASE_URL+"/ws");
 
   stompClient = new Client({
     webSocketFactory: () => socket as any,
